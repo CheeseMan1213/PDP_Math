@@ -43,3 +43,6 @@ out/
 
 ### MacOS ###
 .DS_Store
+
+### Takling to GitHub Copilot ###
+prompt.txt

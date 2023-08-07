@@ -1,7 +1,0 @@
-The purpose of this file is so that way I can chat with GitHub Copilot.
-q: What created the bin directory?
-a: I did.
-q: What is the purpose of the bin directory?
-a: The purpose of the bin directory is to store the compiled files.
-q: Is the bin directory safeto place in the .gitignore file?
-a: Yes, the bin directory is safe to place in the .gitignore file.
