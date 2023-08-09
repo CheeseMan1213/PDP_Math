@@ -16,7 +16,7 @@ class TestApplicationTests {
     @Test
     public void contextLoads() {
       // Verifies the spring framework for version.
-      assertEquals("6.0.10", SpringVersion.getVersion());
+      assertEquals("6.0.11", SpringVersion.getVersion());
       // VerifiesJDK version.
       assertEquals("17.0.8", SystemProperties.get("java.version"));
       // Verifies Java version.
