@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  backend:
+    image: pdp_math-app
+    ports:
+      - "8080:8080"
