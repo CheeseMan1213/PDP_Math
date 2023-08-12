@@ -11,9 +11,16 @@ RUN gradle build --no-daemon -x test -x checkstyleMain -x checkstyleTest -x spot
 
 
 # Stage 2: Run the application.
-FROM openjdk:17-jdk-alpine
+FROM alpine:latest
+
+ENV JAVA_VERSION=17
+ENV JAVA_PACKAGE=openjdk${JAVA_VERSION}
 # Update the base image.
 RUN apk update
+RUN apk upgrade
+RUN apk add --no-cache ${JAVA_PACKAGE}
+ENV JAVA_HOME=/usr/lib/jvm/${JAVA_PACKAGE}
+ENV PATH=${PATH}:${JAVA_HOME}/bin
 
 # Create and change to non-root user.
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
