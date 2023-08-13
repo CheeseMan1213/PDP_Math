@@ -20,16 +20,21 @@ repositories {
 
 dependencies {
   // implementation 'org.springframework.boot:spring-boot-starter-security'
-  implementation 'org.springframework.boot:spring-boot-starter-web'
-  implementation 'org.slf4j:slf4j-api'
-  implementation 'ch.qos.logback:logback-classic'
+  implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+  implementation 'org.slf4j:slf4j-api:2.0.7'
+  implementation 'ch.qos.logback:logback-classic:1.4.11'
   implementation 'org.springframework.kafka:spring-kafka'
   implementation 'org.apache.kafka:kafka-clients'
   // implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
   // developmentOnly 'org.springframework.boot:spring-boot-devtools'
-  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
   testImplementation 'org.springframework.kafka:spring-kafka-test'
   // testImplementation 'org.springframework.security:spring-security-test'
+}
+
+ext {
+  set('snakeyaml.version','2.0')
+//  set('snappy-java.version','1.1.10.1')
 }
 
 tasks.named('test') {
