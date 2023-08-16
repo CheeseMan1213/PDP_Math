@@ -1,6 +1,7 @@
 package com.james2ch9developer.pdp_math.comsumer;
 
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -14,12 +15,14 @@ public class QuadraticFormulaConsumer {
 
   private final Logger logger = (Logger) LoggerFactory.getLogger(QuadraticFormulaConsumer.class);
   private String[] message;
+  private CountDownLatch latch = new CountDownLatch(1);
 
   @KafkaListener(topics = "${spring.kafka.topic}")
   public final void receive(final ConsumerRecord<String, String> consumerRecord) {
     logger.info("received message='{}'", consumerRecord.toString());
     message = consumerRecord.value().split(", ");
     logger.info("message was: " + message);
+    latch.countDown();
     // DeleteMe: This is just to test the spotbugs error: NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE
     // String name = null;
     // System.out.println(name.length());
@@ -29,5 +32,13 @@ public class QuadraticFormulaConsumer {
     // I return a copy here because of the spotbugs error: EI_EXPOSE_REP: May expose
     // internal representation by returning reference to mutable object
     return Arrays.copyOf(message, 4);
+  }
+
+  public final CountDownLatch getLatch() {
+    return latch;
+  }
+
+  public final void resetLatch() {
+    latch = new CountDownLatch(1);
   }
 }
