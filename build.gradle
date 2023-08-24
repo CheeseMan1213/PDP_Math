@@ -3,7 +3,7 @@ plugins {
   id 'org.springframework.boot' version '3.1.2'
   id 'io.spring.dependency-management' version '1.1.3'
   id 'checkstyle'
-  id 'com.github.spotbugs' version '5.1.2'
+  id 'com.github.spotbugs' version '5.1.3'
 }
 
 group = 'com.james2ch9developer'
@@ -24,6 +24,22 @@ dependencies {
   implementation 'org.slf4j:slf4j-api:2.0.7'
   implementation 'ch.qos.logback:logback-classic:1.4.11'
   implementation 'org.springframework.kafka:spring-kafka:3.0.9'
+  /*
+  Regarding the Kafka clients dependency. I have now encountered issues with versioning twice.
+  * First, I had trouble specifying a higher version number, so I figured out which one it was pulling
+  * down and then placed for that specific number.
+  *
+  * About a week later, the github dependabot Informed me that I can go to version 3.5.1.
+  * In both cases I was getting this error:
+  * Caused by: org.apache.kafka.common.errors.TimeoutException
+  * Then I read this page:
+  * https://stackoverflow.com/questions/53783938/org-springframework-context-applicationcontextexception
+  -failed-to-start-bean-o
+  *
+  * This page mentions that there is a relationship between the spring boot version and the Kafka clients version.
+  * From this point forward, I can never use a newer version of Kafka clients, unless I am also
+  * using a newer version of spring boot.
+  * */
   implementation 'org.apache.kafka:kafka-clients:3.4.1'
   // implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
   // developmentOnly 'org.springframework.boot:spring-boot-devtools'
