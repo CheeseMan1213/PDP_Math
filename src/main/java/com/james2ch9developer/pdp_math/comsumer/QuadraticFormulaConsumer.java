@@ -3,7 +3,10 @@ package com.james2ch9developer.pdp_math.comsumer;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
+import com.james2ch9developer.pdp_math.document.QuadraticFormula;
+import com.james2ch9developer.pdp_math.repository.QuadraticFormulaRepository;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,8 @@ public class QuadraticFormulaConsumer {
 
   private final Logger logger = (Logger) LoggerFactory.getLogger(QuadraticFormulaConsumer.class);
   private String[] message;
+  @Autowired
+  private QuadraticFormulaRepository repository;
   private CountDownLatch latch = new CountDownLatch(1);
 
   @KafkaListener(topics = "${spring.kafka.topic}")
@@ -23,6 +28,11 @@ public class QuadraticFormulaConsumer {
     message = consumerRecord.value().split(", ");
     logger.info("message was: " + message);
     latch.countDown();
+
+    QuadraticFormula quadraticFormulaData = new QuadraticFormula.Builder()
+      .setCoefficientsAndUserEmail(message).build();
+    repository.save(quadraticFormulaData);
+
     // DeleteMe: This is just to test the spotbugs error: NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE
     // String name = null;
     // System.out.println(name.length());

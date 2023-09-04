@@ -14,7 +14,7 @@ public class QuadraticFormulaTest {
     QuadraticFormula quadraticFormulaData = new QuadraticFormula.Builder()
         .setCoefficientsAndUserEmail(coefficientsAndUserEmail).build();
 
-    assertEquals(-1.0, quadraticFormulaData.answer1());
-    assertEquals(-3.0, quadraticFormulaData.answer2());
+    assertEquals(-1.0, quadraticFormulaData.getAnswer1());
+    assertEquals(-3.0, quadraticFormulaData.getAnswer2());
   }
 }

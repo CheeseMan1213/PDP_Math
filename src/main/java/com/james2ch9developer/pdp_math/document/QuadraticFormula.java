@@ -1,14 +1,29 @@
 package com.james2ch9developer.pdp_math.document;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public record QuadraticFormula(double answer1, double answer2, double a, double b, double c, String userEmail) {
+@Document(collection = "quadraticFormula")
+@Data
+@AllArgsConstructor
+public class QuadraticFormula {
 
   private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(QuadraticFormula.class);
 
+  @Id
+  private String userEmail;
+  private double a;
+  private double b;
+  private double c;
+  private double answer1;
+  private double answer2;
+
   // Method to retrieve the coefficients used in the calculation
-  public void printCoefficients() {
+  public final void printCoefficients() {
     LOGGER.info("Coefficients: a=" + a + ", b=" + b + ", c=" + c);
   }
 
@@ -19,7 +34,7 @@ public record QuadraticFormula(double answer1, double answer2, double a, double 
     private double c;
     private String userEmail;
 
-    public final Builder setCoefficientsAndUserEmail(final String[] coefficientsAndUserEmail) {
+    public final QuadraticFormula.Builder setCoefficientsAndUserEmail(final String[] coefficientsAndUserEmail) {
 
       if (coefficientsAndUserEmail == null || coefficientsAndUserEmail.length != 4) {
         throw new IllegalArgumentException("Array must be non-null and have exactly 4 elements.");
@@ -42,7 +57,7 @@ public record QuadraticFormula(double answer1, double answer2, double a, double 
       LOGGER.info("Calculated answers: answer1=" + answer1 + ", answer2=" + answer2);
 
       // Return the QuadraticFormula record with coefficients included
-      return new QuadraticFormula(answer1, answer2, a, b, c, userEmail);
+      return new QuadraticFormula(userEmail, a, b, c, answer1, answer2);
     }
   }
 }
