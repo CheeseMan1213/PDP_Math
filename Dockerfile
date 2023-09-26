@@ -1,4 +1,10 @@
-# Stage 1: Build the application.
+# Stage 1: Download the OpenTelemetry Java agent.
+FROM curlimages/curl:8.2.1 AS download
+ARG OTEL_AGENT_VERSION="1.29.0"
+RUN curl --silent --fail -L "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v${OTEL_AGENT_VERSION}/opentelemetry-javaagent.jar" \
+    -o "$HOME/opentelemetry-javaagent.jar"
+
+# Stage 2: Build the application.
 FROM gradle:7.5.1-jdk17 AS build
 
 WORKDIR /app
@@ -10,7 +16,7 @@ COPY src src
 RUN gradle build --no-daemon -x test -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest
 
 
-# Stage 2: Run the application.
+# Stage 3: Run the application.
 FROM alpine:latest
 
 ENV JAVA_VERSION=17
@@ -27,6 +33,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
 COPY --from=build /app/build/libs/PDP_Math-1.0.0.jar /app/PDP_Math-1.0.0.jar
+COPY --from=download /home/curl_user/opentelemetry-javaagent.jar /opentelemetry-javaagent.jar
 
 # Places the most recently built JAR file into the container environment.
 # COPY ./build/libs/PDP_Math-1.0.0.jar PDP_Math-1.0.0.jar
@@ -44,6 +51,7 @@ ENV READ_ONLY=true
 # These commands do not run on container start up, only for the image build.
 # ENTRYPOINT = Sets commands to run on container startup that you cannot overwright.
 # CMD = Sets commands to run on container startup that may be overwrighten.
-CMD ["java", "-jar", "/app/PDP_Math-1.0.0.jar"]
+# CMD ["java", "-jar", "/app/PDP_Math-1.0.0.jar"]
+ENTRYPOINT ["java", "-javaagent:/opentelemetry-javaagent.jar", "-jar", "/app/PDP_Math-1.0.0.jar"]
 
 # podman run -p 8080:8080 -d --name pdp-math pdp-math
