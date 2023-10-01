@@ -43,7 +43,7 @@ EXPOSE 8080/tcp
 # Places the container into read only mode. This is more secure, but it also means that
 # the application cannot write to the container.
 # It might cause problems.
-ENV READ_ONLY=true
+#ENV READ_ONLY=true
 
 # Used the command 'CMD' to run the app on container start up.
 # Remember:
