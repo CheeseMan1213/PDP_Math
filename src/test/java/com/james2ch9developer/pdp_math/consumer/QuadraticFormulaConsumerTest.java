@@ -4,49 +4,36 @@ import ch.qos.logback.classic.Logger;
 import com.james2ch9developer.pdp_math.comsumer.QuadraticFormulaConsumer;
 import com.james2ch9developer.pdp_math.document.QuadraticFormula;
 import com.james2ch9developer.pdp_math.repository.QuadraticFormulaRepository;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@DirtiesContext
 //@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 @SpringBootTest
+@Testcontainers
 class QuadraticFormulaConsumerTest {
   private final Logger logger = (Logger) LoggerFactory.getLogger(QuadraticFormulaConsumerTest.class);
 
+  @Container
+  @ServiceConnection
   private static final MongoDBContainer MONGODB_CONTAINER = new MongoDBContainer(DockerImageName.parse("mongo:latest"));
+  @Container
+  @ServiceConnection
   private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName
     .parse("confluentinc/cp-kafka:latest"));
-
-  @BeforeAll
-  public static void setUp() {
-    MONGODB_CONTAINER.start();
-    KAFKA_CONTAINER.start();
-  }
-
-  @AfterAll
-  public static void tearDown() {
-    MONGODB_CONTAINER.stop();
-    KAFKA_CONTAINER.stop();
-  }
-
-  @DynamicPropertySource
-  static void configureProperties(final DynamicPropertyRegistry registry) {
-    registry.add("spring.data.mongodb.uri", MONGODB_CONTAINER::getReplicaSetUrl);
-    registry.add("spring.kafka.bootstrap-servers", KAFKA_CONTAINER::getBootstrapServers);
-  }
 
   @Autowired
   private KafkaTemplate<String, String> template;

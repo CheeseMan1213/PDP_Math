@@ -13,7 +13,7 @@ COPY src src
 # I had a bit of trouble getting checks starting to run so I decided to skip all the checks for the build..
 # You are expected to run these checks one testing locally.
 # You are expected to run these checks explicitly in the pipeline first, then build the image without them.
-RUN gradle build --no-daemon -x test -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest
+RUN gradle clean build --no-daemon -x test -x checkstyleMain -x checkstyleTest -x spotbugsMain -x spotbugsTest
 
 
 # Stage 3: Run the application.

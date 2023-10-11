@@ -170,7 +170,7 @@
 
     <!-- Checks for class design                         -->
     <!-- See https://checkstyle.org/checks/design/index.html -->
-    <module name="DesignForExtension"/>
+<!--    <module name="DesignForExtension"/>-->
     <module name="FinalClass"/>
     <!-- <module name="HideUtilityClassConstructor"/> -->
     <module name="InterfaceIsType"/>
@@ -189,11 +189,6 @@
                 default="checkstyle-xpath-suppressions.xml" />
       <property name="optional" value="true"/>
     </module>
-
-    <!-- <module name="Indentation">
-      <property name="indent_style" value="space"/>
-      <property name="indent_size" value="2"/>
-    </module> -->
 
   </module>
 

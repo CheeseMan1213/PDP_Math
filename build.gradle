@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-  // implementation 'org.springframework.boot:spring-boot-starter-security'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
   implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
   implementation 'org.slf4j:slf4j-api:2.0.9'
   implementation 'ch.qos.logback:logback-classic:1.4.11'
@@ -45,11 +45,14 @@ dependencies {
   implementation 'org.apache.kafka:kafka-clients:3.4.1'
   implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.1.4'
   // developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  // Spring framework dependency for ServiceConnection annotation.
+  testImplementation 'org.springframework.boot:spring-boot-testcontainers'
   testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.4'
   testImplementation 'org.springframework.kafka:spring-kafka-test:3.0.11'
+  testImplementation 'org.testcontainers:junit-jupiter:1.19.0'
   testImplementation 'org.testcontainers:mongodb:1.19.0'
   testImplementation 'org.testcontainers:kafka:1.19.0'
-  // testImplementation 'org.springframework.security:spring-security-test'
+  testImplementation 'org.springframework.security:spring-security-test'
 }
 
 ext {
