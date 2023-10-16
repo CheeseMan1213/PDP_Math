@@ -24,7 +24,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
   implementation 'org.slf4j:slf4j-api:2.0.9'
   implementation 'ch.qos.logback:logback-classic:1.4.11'
-  implementation 'org.springframework.kafka:spring-kafka:3.0.11'
+  implementation 'org.springframework.kafka:spring-kafka:3.0.12'
   implementation 'org.projectlombok:lombok:1.18.30'
   /*
   Regarding the Kafka clients dependency. I have now encountered issues with versioning twice.
@@ -48,7 +48,7 @@ dependencies {
   // Spring framework dependency for ServiceConnection annotation.
   testImplementation 'org.springframework.boot:spring-boot-testcontainers'
   testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.4'
-  testImplementation 'org.springframework.kafka:spring-kafka-test:3.0.11'
+  testImplementation 'org.springframework.kafka:spring-kafka-test:3.0.12'
   testImplementation 'org.testcontainers:junit-jupiter:1.19.0'
   testImplementation 'org.testcontainers:mongodb:1.19.1'
   testImplementation 'org.testcontainers:kafka:1.19.1'
