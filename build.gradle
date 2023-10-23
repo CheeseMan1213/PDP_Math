@@ -43,7 +43,7 @@ dependencies {
   * using a newer version of spring boot.
   * */
   implementation 'org.apache.kafka:kafka-clients:3.6.0'
-  implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.1.4'
+  implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.1.5'
   // developmentOnly 'org.springframework.boot:spring-boot-devtools'
   // Spring framework dependency for ServiceConnection annotation.
   testImplementation 'org.springframework.boot:spring-boot-testcontainers'
