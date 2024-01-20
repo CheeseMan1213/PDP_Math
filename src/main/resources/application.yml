@@ -7,3 +7,12 @@ spring:
       auto-offset-reset: earliest
       group-id: quadratic-group-id
     topic: quadratic-formula-topic
+  security:
+    user:
+      name: ${CLIENT_ID}
+      password: ${CLIENT_SECRET}
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: ${CLIENT_ID}
+      client-secret: ${CLIENT_SECRET}

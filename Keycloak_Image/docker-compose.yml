@@ -19,10 +19,14 @@ services:
     pull_policy: always
     container_name: bitnami_keycloak
     image: docker.io/bitnami/keycloak:latest
+    environment:
+       - KEYCLOAK_IMPORT=/config/keycloakConfig.json
+    volumes:
+       - ./keycloakConfig.json:/config/keycloakConfig.json
     depends_on:
       - postgresql
     ports:
-      - "8080:8080"
+      - "8081:8080"
 
 volumes:
   postgresql_data:
