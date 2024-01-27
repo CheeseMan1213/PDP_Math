@@ -9,10 +9,10 @@ spring:
     topic: quadratic-formula-topic
   security:
     user:
-      name: ${CLIENT_ID}
-      password: ${CLIENT_SECRET}
-springdoc:
-  swagger-ui:
-    oauth:
-      client-id: ${CLIENT_ID}
-      client-secret: ${CLIENT_SECRET}
+      name: james
+      password: $2a$12$yt6LNISxcm83rFBzz5itY.L.ENTxP7EaHCvpHyBZX4hq7vmlIkjDa
+#springdoc:
+#  swagger-ui:
+#    oauth:
+#      client-id: ${CLIENT_ID}
+#      client-secret: ${CLIENT_SECRET}

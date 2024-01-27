@@ -14,5 +14,5 @@ public class Hello {
   public final String sayHello() {
     return "Hello.";
   }
-  // URL: http://localhost:8080/v1/hello/hello
+  // URL: http://localhost:8080/hello/v1/hello
 }

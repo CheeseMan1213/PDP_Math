@@ -2,7 +2,6 @@ package com.james2ch9developer.pdp_math.repository;
 
 import com.james2ch9developer.pdp_math.document.QuadraticFormula;
 import org.springframework.data.mongodb.repository.MongoRepository;
-//import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
