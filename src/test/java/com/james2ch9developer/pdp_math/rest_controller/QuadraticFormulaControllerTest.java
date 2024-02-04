@@ -29,10 +29,6 @@ public class QuadraticFormulaControllerTest {
    @WithMockUser(username = "james2ch9developer@gmail")
    public void testQuadraticFormula() throws Exception {
      String coefficients = "1, 2, 3";
-//     this.mockMvc.perform(post("/quadraticFormula/v1/quadraticFormula")
-//       .contentType(MediaType.APPLICATION_JSON)
-//       .content(objectMapper.writeValueAsString(coefficients)))
-//       .andExpect(status().isOk());
      this.mockMvc.perform(post("/quadraticFormula/v1/quadraticFormula")
          .contentType(MediaType.TEXT_PLAIN)
          .content(coefficients))

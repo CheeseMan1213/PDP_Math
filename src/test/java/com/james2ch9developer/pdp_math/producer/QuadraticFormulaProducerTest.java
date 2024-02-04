@@ -1,6 +1,5 @@
 //package com.james2ch9developer.pdp_math.producer;
 //
-//import com.fasterxml.jackson.core.JsonProcessingException;
 //import org.apache.kafka.clients.producer.ProducerRecord;
 //import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +10,6 @@
 //
 //import com.james2ch9developer.pdp_math.document.QuadraticFormula;
 //import org.springframework.util.concurrent.SettableListenableFuture;
-//
-//import java.util.concurrent.ExecutionException;
 //
 //@ExtendWith(MockitoExtension.class)
 //public class QuadraticFormulaProducerTest {

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdp-math-deployment
+  namespace: default
+  labels:
+    app: pdpMath
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdpMath
+      tier: backend  # Changed from 'baq' to 'backend'
+  template:
+    metadata:
+      labels:
+        app: pdpMath
+        tier: backend
+    spec: # Pod spec
+      containers:
+        - name: pdp-math-app  # Changed from 'pdp_math-app' to 'pdp-math-app'
+          image: cheeseman1213/practice-data-processing:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "50m"    # 500milliCPUs (1/2 CPU)

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdp-math-service
+  namespace: default
+  labels:
+    app: pdpMath
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: pdpMath
+    tier: backend
+  type: LoadBalancer
