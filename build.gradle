@@ -2,7 +2,7 @@ import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
 plugins {
   id 'java'
-  id 'org.springframework.boot' version '3.1.4'
+  id 'org.springframework.boot' version '3.2.2'
   id 'io.spring.dependency-management' version '1.1.4'
   id 'checkstyle'
   id 'com.github.spotbugs' version '6.0.7'
@@ -23,19 +23,19 @@ repositories {
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-security'
-  implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
+  implementation 'org.springframework.boot:spring-boot-starter-web:3.2.2'
   implementation 'org.slf4j:slf4j-api:2.0.11'
   implementation 'ch.qos.logback:logback-classic:1.4.11'
-  implementation 'org.springframework.kafka:spring-kafka:3.1.0'
+  implementation 'org.springframework.kafka:spring-kafka:3.1.1'
   implementation 'org.projectlombok:lombok:1.18.30'
   implementation 'org.apache.kafka:kafka-clients:3.6.1'
   implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.2.2'
-  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
   // developmentOnly 'org.springframework.boot:spring-boot-devtools'
   // testImplementation 'org.springframework.boot:spring-boot-testcontainers'
   testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.2'
-  testImplementation 'org.springframework.kafka:spring-kafka-test:3.1.0'
-  testImplementation 'org.testcontainers:junit-jupiter:1.19.4'
+  testImplementation 'org.springframework.kafka:spring-kafka-test:3.1.1'
+//  testImplementation 'org.testcontainers:junit-jupiter:1.19.4'
   testImplementation 'org.testcontainers:mongodb:1.19.4'
   testImplementation 'org.testcontainers:kafka:1.19.4'
   testImplementation 'org.springframework.security:spring-security-test'
